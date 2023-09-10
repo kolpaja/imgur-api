@@ -1,21 +1,27 @@
 import imgurPng from "@/assets/img/imgur-favicon-32x32.png"
 import navBgImg from "@/assets/img/imgur-header-banner.png"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import imgurLogo from "../assets/imgur.svg"
 import { Button } from "./ui/button"
 
 import SearchGallery from "./GalleryComponents/SearchGallery"
 
-type Props = {}
+// @ts-ignore
+import { ReactComponent as PlusIcon } from "@/assets/plus.svg"
+import ViralFilter from "./Filters/ViralFilter"
+import ActionButtons from "./CTA/ActionButtons"
+import LayoutToggle from "./CTA/LayoutToggle"
 
-const Navbar = (props: Props) => {
+import GalleryFilters from "./Filters/GalleryFilters"
+
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [scrolled, setScrolled] = useState(0)
 
   useEffect(() => {
-    window.addEventListener("scroll", (e) => {
-      if (window.scrollY > 300) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
         setIsScrolled(true)
       } else {
         setScrolled(window.scrollY)
@@ -28,12 +34,10 @@ const Navbar = (props: Props) => {
     }
   }, [])
 
-  console.log(`is Scrolled `, isScrolled, 400 - scrolled, window.scrollY)
-
   return (
     <header
       className={cn(
-        "w-full flex justify-between absolute top-0 left-0 right-0 mx-auto items-center",
+        "w-full flex justify-between absolute  top-0 left-0 right-0 mx-auto items-center",
         isScrolled ? "h-[90px] z-30" : `h-[400px] z-10 items-start px-6 py-4`,
       )}
       style={{
@@ -42,48 +46,50 @@ const Navbar = (props: Props) => {
       }}
     >
       <div
-        className="fixed top-0 left-0 right-0 w-full px-6 py-4 flex justify-between"
+        className={cn(
+          "fixed top-0 left-0 right-0 w-full px-6 py-4 flex justify-between",
+          isScrolled ? "shadow-lg  shadow-black " : "",
+        )}
         style={{
           backgroundImage: `url(${navBgImg})`,
         }}
       >
         {/* imgur img */}
         {isScrolled ? (
-          <span className="min-w-[360px] text-white">
+          <div className="min-w-[360px] flex items-center gap-x-1 text-white">
             <img src={imgurPng} width={34} height={34} />
-          </span>
+            <ViralFilter isScrolled={isScrolled} />
+          </div>
         ) : (
-          <div className="min-w-[360px] text-white">
+          <div className="min-w-[360px] flex items-center gap-x-3 text-white">
             <img src={imgurLogo} />
+            <Button className="bg-green-600 py-0 hover:bg-green-500 text-md text-white font-semibold">
+              <PlusIcon className="mr-1" />
+              New Post
+            </Button>
           </div>
         )}
 
         {/* search */}
-        <div className="max-w-xl mx-auto flex-1">
-          <div className="w-full relative top-0 left-0  max-w-[550px]">
+        <div className="max-w-xl mx-auto flex-1 relative top-0 left-0  z-[1000]">
+          <div
+            className={cn(
+              "w-full relative top-0 left-0  z-[1000] max-w-[550px]",
+            )}
+          >
             <SearchGallery />
           </div>
         </div>
 
         {/* go ad-free sign in sign up  */}
-        <div className="flex gap-x-2 min-w-[280px]">
-          <Button className="bg-purple-600 hover:bg-purple-500 text-white capitalize">
-            Go ad-free
-          </Button>
-          <Button
-            variant={"link"}
-            className="text-white hover:bg-transparent font-semibold"
-          >
-            Sign in
-          </Button>
-
-          <Button
-            variant={"secondary"}
-            className="bg-green-500 font-semibold text-white hover:bg-green-400"
-          >
-            Sign up
-          </Button>
-        </div>
+        {isScrolled ? (
+          <div className="min-w-[280px] flex items-center gap-x-3 ">
+            <GalleryFilters isScrolled={isScrolled} />
+            <LayoutToggle isScrolled={isScrolled} />
+          </div>
+        ) : (
+          <ActionButtons isScrolled={isScrolled} />
+        )}
       </div>
     </header>
   )

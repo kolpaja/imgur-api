@@ -1,4 +1,4 @@
-import React from "react"
+import Footer from "../Footer"
 import Navbar from "../Navbar"
 
 type Props = {
@@ -7,9 +7,12 @@ type Props = {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <main className=" mx-auto">
+    <main className="mx-auto ">
       <Navbar />
-      <div className="max-w-7xl mx-auto">{children}</div>
+      <div className="max-w-7xl min-h-screen h-fit flex flex-col mx-auto h-full">
+        {children}
+      </div>
+      <Footer />
     </main>
   )
 }

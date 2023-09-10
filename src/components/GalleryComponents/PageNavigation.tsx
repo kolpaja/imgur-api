@@ -17,7 +17,7 @@ const PageNavigation = ({ page, setPage }: Props) => {
   }
 
   return (
-    <div className="w-full flex justify-between items-center ">
+    <div className="w-full flex justify-between items-center px-4 py-8">
       <div>
         {page > 0 ? (
           <Button variant={"secondary"} onClick={handleBack}>
@@ -25,7 +25,7 @@ const PageNavigation = ({ page, setPage }: Props) => {
           </Button>
         ) : null}
       </div>
-      <div>page: {page}</div>
+      <div className="uppercase font-semibold">page: {page + 1}</div>
       <div>
         <Button variant={"secondary"} onClick={handleNext}>
           Next

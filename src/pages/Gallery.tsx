@@ -7,7 +7,7 @@ import {
 import React from "react"
 import { useParams } from "react-router-dom"
 import Comments from "@/components/GalleryComponents/Comments"
-import RootLayout from "@/components/Layouts/RootLayout"
+import PostLayout from "@/components/Layouts/PostLayout"
 
 const Gallery = () => {
   const params = useParams()
@@ -31,7 +31,7 @@ const Gallery = () => {
   if (!id || isError) return <div>...something went wrong</div>
 
   return (
-    <RootLayout>
+    <PostLayout>
       <div className="max-w-6xl">
         <div className="min-h-screen">
           <aside>
@@ -48,7 +48,7 @@ const Gallery = () => {
           <Comments {...comments} />
         </div>
       </div>
-    </RootLayout>
+    </PostLayout>
   )
 }
 

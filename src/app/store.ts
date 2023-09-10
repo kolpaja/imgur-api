@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import counterReducer from "../features/counter/counterSlice"
 import filterReducer from "../features/filterSlice"
 import searchFilterReducer from "../features/searchFilterSlice"
+import layoutTypeReducer from "../features/layoutSlice"
 import { galleryApi } from "../features/galleryApi"
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     filters: filterReducer,
+    layoutType: layoutTypeReducer,
     searchFilters: searchFilterReducer,
     [galleryApi.reducerPath]: galleryApi.reducer,
   },

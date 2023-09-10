@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface IFilters {
-  section: "hot" | "top" | "user"
-  sort: "viral" | "top" | "time" | "rising"
-  window: "day" | "week" | "month" | "year" | "all"
+  section?: "hot" | "top" | "user"
+  sort?: "viral" | "top" | "time" | "rising"
+  window?: "day" | "week" | "month" | "year" | "all"
   page: number
-  showViral?: true
+  showViral?: boolean
 }
 
 const initialState: IFilters = {
@@ -21,7 +21,7 @@ export const filtersSlice = createSlice({
   initialState,
   reducers: {
     changeFilters: (state: IFilters, actions: PayloadAction<IFilters>) => {
-      return (state = actions.payload)
+      return (state = { ...state, ...actions.payload })
     },
     nextPage: (state: IFilters) => {
       state.page += 1

@@ -1,5 +1,10 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Tailwindcss
 
+# Imgur Clone
+- Gallery view
+- Filter gallery
+- View Gallery with the comments*
+- Search Galleries
 
 ## Scripts
 
@@ -23,6 +28,8 @@ Currently, two official plugins are available:
 
 # UI Library
    - [shadcn-ui](https://ui.shadcn.com/) re-usable components built using Radix UI and Tailwind CSS.
+
+
 
 ## Expanding the ESLint configuration
 

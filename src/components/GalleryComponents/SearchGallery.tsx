@@ -3,15 +3,10 @@ import React, { useState, useCallback } from "react"
 import { Search, X } from "lucide-react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 
-type Props = {}
-
-const SearchGallery = (props: Props) => {
+const SearchGallery = () => {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const [search, setSearch] = useState(searchParams.get("q") || "")
-  console.log("🚀 ~ file: SearchGallery.tsx:12 ~ SearchGallery ~ params:", {
-    searchParams,
-  })
 
   const debouncedSearch = debounce((criteria) => {
     setSearch(criteria)
@@ -24,7 +19,9 @@ const SearchGallery = (props: Props) => {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    navigate(`/search?q=${search}`)
+    if (search.trim().length > 0) {
+      navigate(`/search?q=${search}`)
+    }
   }
 
   const handleClear = useCallback(() => {
@@ -33,7 +30,10 @@ const SearchGallery = (props: Props) => {
   }, [setSearchParams])
 
   return (
-    <form className="w-full" onSubmit={(e) => handleSubmit(e)}>
+    <form
+      className="w-full relative z-[1000]"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <input
         name="search"
         value={search}
