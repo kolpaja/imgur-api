@@ -59,8 +59,8 @@ function App() {
         )}
 
         {isLoading ? (
-          <div className="grid   sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 grid-flow-row gap-4 z-20">
-            {Array.from({ length: 20 }).map((_, idx) => (
+          <div className="grid max-w-[1900px]   sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 grid-flow-row gap-4 z-20">
+            {Array.from({ length: 30 }).map((_, idx) => (
               <LoadingCard key={idx} />
             ))}
           </div>
