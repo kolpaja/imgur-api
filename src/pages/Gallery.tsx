@@ -35,8 +35,8 @@ const Gallery = () => {
 
   const { id } = params
 
-  const { data, isLoading, isError } = useGetSingleGalleryQuery(id)
-  console.log("🚀 ~ file: Gallery.tsx:21 ~ Gallery ~ data:", data?.data, {})
+  const { data, isLoading, isError, error } = useGetSingleGalleryQuery(id)
+  console.log("🚀 ~ file: Gallery.tsx:21 ~ Gallery ~ data:", { error })
 
   // render comments when it is scrolled
 
@@ -58,23 +58,11 @@ const Gallery = () => {
 
   if (isLoading) return <div>...loading post</div>
 
-  const {
-    points,
-    comment_count,
-    title,
-    account_url,
-    views,
-    datetime,
-    description,
-    images_count,
-    images,
-  } = data.data
-
-  const postDate = new Date(datetime * 1000)
+  const postDate = new Date(data?.data?.datetime * 1000)
 
   const postDateAgo = getPostDate(postDate, currentDate)
 
-  const currentImage = images[0]
+  const currentImage = data?.data?.images[0]
 
   return (
     <PostLayout>
@@ -98,7 +86,7 @@ const Gallery = () => {
                   </button>
                   <div className="text-sm  flex items-center justify-center text-zinc-400">
                     <span className="text-right" title="Total Score">
-                      {points}
+                      {data?.data?.points}
                     </span>
                   </div>
                   <button
@@ -130,7 +118,9 @@ const Gallery = () => {
                   title="Jump to comments"
                 >
                   <MessageCircle className="h-6 w-6 text-white" />
-                  <span className="text-xs text-white">{comment_count}</span>
+                  <span className="text-xs text-white">
+                    {data?.data?.comment_count}
+                  </span>
                 </Link>
               </aside>
             </div>
@@ -140,7 +130,7 @@ const Gallery = () => {
               <header className="flex flex-col">
                 <div className="flex">
                   <h1 className="min-w-5 text-2xl font-semibold text-zinc-200">
-                    {title}
+                    {data?.data?.title}
                   </h1>
                   <Button
                     variant="secondary"
@@ -151,7 +141,7 @@ const Gallery = () => {
                 </div>
 
                 <div className="flex items-center gap-x-3 h-8 m-4 ml-0">
-                  <UserAvatar username={account_url} />
+                  <UserAvatar username={data?.data?.account_url} />
                   <div className="flex flex-col">
                     {isSuccessUser && (
                       <h3 className="text-green-500 text-sm font-semibold">
@@ -160,7 +150,7 @@ const Gallery = () => {
                     )}
                     <div className="flex items-center justify-center gap-x-0">
                       <span className="text-xs text-gray-300">
-                        {Number(views).toLocaleString()} Views
+                        {Number(data?.data?.views).toLocaleString()} Views
                       </span>
                       <span>
                         <Dot className=" text-gray-300" />
