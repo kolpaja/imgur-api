@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from "react"
+import { useRef } from "react"
 
 import {
   useGetGalleryCommentsQuery,
@@ -17,7 +17,6 @@ import {
   MessageCircle,
   MoreHorizontal,
   Popcorn,
-  Share,
   Share2,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -25,6 +24,7 @@ import UserAvatar from "@/components/GalleryComponents/UserAvatar"
 import { useGetUserByUsernameQuery } from "@/features/usersApi"
 import { getPostDate } from "@/lib/date"
 import MediaViewer from "@/components/GalleryComponents/MediaViewer"
+import Error from "@/components/Error"
 
 // Get the current date
 const currentDate = new Date()
@@ -36,7 +36,9 @@ const Gallery = () => {
   const { id } = params
 
   const { data, isLoading, isError, error } = useGetSingleGalleryQuery(id)
-  console.log("🚀 ~ file: Gallery.tsx:21 ~ Gallery ~ data:", { error })
+  console.log("🚀 ~ file: Gallery.tsx:21 ~ Gallery ~ data:", data?.data, {
+    error,
+  })
 
   // render comments when it is scrolled
 
@@ -54,7 +56,7 @@ const Gallery = () => {
     isSuccess: isSuccessUser,
   } = useGetUserByUsernameQuery(data?.data?.account_url)
 
-  if (!id || isError) return <div>...something went wrong</div>
+  if (!id || isError) return <Error />
 
   if (isLoading) return <div>...loading post</div>
 
@@ -64,9 +66,13 @@ const Gallery = () => {
 
   const currentImage = data?.data?.images[0]
 
+  const imagesLength = Number(data?.data?.images_count)
+
   return (
-    <PostLayout>
-      <div className="pt-[24px]">
+    <PostLayout
+      post={{ title: data?.data?.title, author: data?.data?.account_url }}
+    >
+      <div className="pt-[24px] h-fit scroll-smooth overflow-visible">
         <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 mx-auto  max-w-6xl">
           <div className="flex w-full pt-10 flex-grow flex-row items-stretch z-10 ">
             <div className="w-[60px] basis-[60px] z-[3]">
@@ -125,7 +131,7 @@ const Gallery = () => {
               </aside>
             </div>
 
-            <section className="flex h-screen flex-col w-full mx-6 p-6 pt-10">
+            <section className="flex flex-col w-full mx-6 p-6 pt-10">
               {/* header */}
               <header className="flex flex-col">
                 <div className="flex">
@@ -166,10 +172,34 @@ const Gallery = () => {
                 </div>
               </header>
 
-              <div className="flex flex-col">
-                <div>
-                  <MediaViewer mediaObject={currentImage} />
+              <div className="flex flex-col h-full">
+                <div className="max-w-[760px] h-fit flex flex-col gap-y-8">
+                  {imagesLength > 1 ? (
+                    data?.data?.images?.map((item: any) => (
+                      <MediaViewer key={item.id} mediaObject={item} />
+                    ))
+                  ) : (
+                    <MediaViewer mediaObject={currentImage} />
+                  )}
                 </div>
+
+                {data?.data?.description && <p>{data?.data?.description}</p>}
+
+                {data?.data?.tags.length > 0 ? (
+                  <div className="flex my-2 flex-wrap gap-3">
+                    {data?.data?.tags?.map((tag: any) => (
+                      <div
+                        key={tag.id}
+                        style={{
+                          backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://i.imgur.com/${tag.background_hash}_d.jpg?maxwidth=200&fidelity=grand)`,
+                        }}
+                        className="min-w-[100px] shadow-lg h-10 px-2 py-2 text-white border border-zinc-500 lowercase rounded-2xl flex justify-center items-center"
+                      >
+                        {tag.display_name}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </section>
           </div>

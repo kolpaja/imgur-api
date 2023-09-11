@@ -51,9 +51,9 @@ const GalleryFilters = ({ isScrolled }: Props) => {
   return (
     <div>
       {!isScrolled ? (
-        <div className="mr-3 flex items-center gap-x-2">
-          <div className="bg-transparent">
-            <label className="mr-1" htmlFor="section">
+        <div className="mr-3 flex flex-col md:flex-row items-start md:items-center gap-x-2">
+          <div className="bg-transparent ">
+            <label className="mr-1 text-white" htmlFor="section">
               Section
             </label>
             <select
@@ -71,10 +71,10 @@ const GalleryFilters = ({ isScrolled }: Props) => {
             </select>
           </div>
 
-          <div className="h-6 w-0.5 bg-zinc-600 rounded-lg " />
+          <div className="hidden md:block h-6 w-0.5 bg-zinc-600 rounded-lg " />
 
           <div className="bg-transparent">
-            <label className="mr-1" htmlFor="sort">
+            <label className="mr-1 text-white" htmlFor="sort">
               Sort by
             </label>
             <select
@@ -90,10 +90,11 @@ const GalleryFilters = ({ isScrolled }: Props) => {
               {isUserSelected && <option value="rising">Rising</option>}
             </select>
           </div>
-          <div className="h-6 w-0.5 bg-zinc-600 rounded-lg " />
+
+          <div className="hidden md:block h-6 w-0.5 bg-zinc-600 rounded-lg " />
 
           <div className="bg-transparent">
-            <label className="mr-1" htmlFor="section">
+            <label className="mr-1 text-white" htmlFor="section">
               Time range
             </label>
             <select
@@ -116,7 +117,7 @@ const GalleryFilters = ({ isScrolled }: Props) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div title="filters">
-                <Filter className="hover:cursor-pointer" />
+                <Filter className="hover:cursor-pointer text-zinc-400" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="left">

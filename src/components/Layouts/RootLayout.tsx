@@ -9,7 +9,7 @@ const RootLayout = ({ children }: Props) => {
   return (
     <main className="mx-auto ">
       <Navbar />
-      <div className="max-w-7xl min-h-screen h-fit flex flex-col mx-auto h-full">
+      <div className="max-w-[2100px] min-h-screen h-fit flex flex-col mx-auto ">
         {children}
       </div>
       <Footer />

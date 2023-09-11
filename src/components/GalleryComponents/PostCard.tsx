@@ -16,7 +16,7 @@ const PostCard = (props: any) => {
   return (
     <div
       className={cn(
-        "w-[300px] min-h-[300px] relative flex border border-gray-600 ",
+        "w-[300px] min-h-[300px] relative flex border border-gray-600 mb-8 ",
       )}
     >
       <Link to={`/gallery/${props.id}`}>

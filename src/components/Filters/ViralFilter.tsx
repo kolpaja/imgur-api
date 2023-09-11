@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react"
+import { useCallback } from "react"
 
-import { Checkbox } from "@radix-ui/react-checkbox"
 import { useAppDispatch, useAppSelector } from "@/app/hook"
 import { changeFilters } from "@/features/filterSlice"
 import { cn } from "@/lib/utils"
@@ -17,13 +16,13 @@ const ViralFilter = ({ isScrolled }: { isScrolled: boolean }) => {
   return (
     <div
       className={cn(
-        "flex items-center px-2 py-1 text-lg uppercase  font-semibold",
+        "flex items-center px-2 py-1 text-lg uppercase  text-white font-semibold",
         isScrolled ? "ml-8 flex-row-reverse " : "flex-row",
       )}
     >
       <input
         type="checkbox"
-        className="mx-2 w-6 h-6 rounded-md"
+        className="mx-2 w-6 h-6 rounded-md text-white"
         checked={filters.showViral}
         onChange={handleShowViral}
       />
