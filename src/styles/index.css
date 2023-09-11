@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* components */
+@import "./sidePost.css";
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,6 +78,3 @@
     @apply bg-background bg-[#2e3035] text-foreground;
   }
 }
-
-/* components */
-@import "./sidePost.css";

@@ -41,7 +41,7 @@ const PostCard = (props: any) => {
         </div>
 
         <div className="w-full absolute left-0 bottom-0 bg-[#474a51]">
-          <p className="px-4 py-1 text-sm text-white min-h-11  overflow-hidden">
+          <p className="px-4 py-1 text-sm text-white min-h-11 h-6 max-w-[300px] text-ellipsis  overflow-hidden">
             {props.title}
           </p>
           <div className="px-4 py-2 flex justify-between items-center">

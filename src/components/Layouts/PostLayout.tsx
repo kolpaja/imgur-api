@@ -49,7 +49,7 @@ const PostLayout = ({ children, post }: SearchLayoutProps) => {
           {isScrolled ? (
             <div className="w-full flex items-center">
               <div className="flex flex-col">
-                <h1 className="text-xl text-white font-bold whitespace-nowrap  text-ellipsis h-6 overflow-hidden">
+                <h1 className="text-xl text-white max-w-xl font-bold whitespace-nowrap  text-ellipsis h-6 overflow-hidden">
                   {post.title}
                 </h1>
                 <h3 className="text-sm italic text-zinc-400">
