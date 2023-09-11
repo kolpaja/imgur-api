@@ -67,7 +67,7 @@ function App() {
           <div
             className={cn("grid grid-cols-4 grid-flow-row gap-4 relative z-50")}
           >
-            {data.data.map((post: any) => {
+            {data?.data?.map((post: any) => {
               return (
                 <div key={post.id} className="">
                   <PostCard {...post} layout={layout} />
