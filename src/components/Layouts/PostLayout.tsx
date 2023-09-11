@@ -28,7 +28,7 @@ const PostLayout = ({ children }: SearchLayoutProps) => {
   }, [])
   return (
     <main className="mx-auto bg-gradient-to-b from-blue-900 via-stone-600 to-stone-700">
-      <nav className="flex justify-between gap-x-8 w-full bg-blue-900 shadow-sm  items-center px-16 fixed top-0 left-0 h-[90px]">
+      <nav className="flex justify-between gap-x-8 w-full bg-blue-900 shadow-sm  items-center px-14 fixed top-0 left-0 h-[60px]">
         <Link to="/" className="min-w-[300px] text-white">
           <img src={imgurLogo} />
         </Link>
@@ -58,7 +58,7 @@ const PostLayout = ({ children }: SearchLayoutProps) => {
           </div>
         )}
       </nav>
-      <div className="max-w-6xl mx-auto pt-[190px]">{children}</div>
+      <div className="max-w-6xl mx-auto">{children}</div>
     </main>
   )
 }

@@ -10,7 +10,7 @@ export const galleryApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: imgurUrl,
     headers: {
-      Authorization: "Client-ID d7c5207abe0dfc3",
+      Authorization: `Client-ID ${import.meta.env.VITE_IMGUR_V3_CLIENT_ID}`,
     },
   }),
   endpoints: (builder) => ({

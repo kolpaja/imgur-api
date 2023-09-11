@@ -13,7 +13,7 @@ const useAxios = (url: string) => {
     method: "get",
     url,
     headers: {
-      Authorization: "Client-ID d7c5207abe0dfc3",
+      Authorization: `Client-ID ${import.meta.env.VITE_IMGUR_V3_CLIENT_ID}`,
     },
   }
 

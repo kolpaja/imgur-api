@@ -5,12 +5,14 @@ import {
   Eye,
   MessageCircle,
 } from "lucide-react"
-import React from "react"
 import { Link } from "react-router-dom"
 
 const PostCard = (props: any) => {
   // console.log("🚀 ~ file: PostCard.tsx:8 ~ PostCard ~ post:", props)
-  const imageSrc = `http://i.imgur.com/${props.cover}.jpg`
+  const imageSrc =
+    props.cover !== undefined
+      ? `http://i.imgur.com/${props.cover}.jpg`
+      : `http://i.imgur.com/${props.id}.jpg`
   return (
     <div
       className={cn(

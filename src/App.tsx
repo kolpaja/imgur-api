@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react"
-import { useAppDispatch, useAppSelector } from "@/app/hook"
+import { useState, useEffect, useCallback } from "react"
+import { useAppSelector } from "@/app/hook"
 import RootLayout from "@/components/Layouts/RootLayout"
 import { useGetAllGalleriesQuery } from "@/features/galleryApi"
 import LoadingCard from "@/components/GalleryComponents/LoadingCard"
@@ -24,8 +24,6 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [scrolled, setScrolled] = useState(0)
 
-  console.log("🚀 ~ file: Navbar.tsx:15 ~ Navbar ~ scrolled:", scrolled)
-
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       if (window.scrollY > 150) {
@@ -49,7 +47,7 @@ function App() {
           isScrolled ? "z-0" : "",
         )}
         style={{
-          marginTop: `${360 - scrolled}px`,
+          marginTop: `${330 - scrolled}px`,
         }}
       >
         {!isScrolled && (

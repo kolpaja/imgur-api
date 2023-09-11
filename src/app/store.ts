@@ -4,6 +4,7 @@ import filterReducer from "../features/filterSlice"
 import searchFilterReducer from "../features/searchFilterSlice"
 import layoutTypeReducer from "../features/layoutSlice"
 import { galleryApi } from "../features/galleryApi"
+import { usersApi } from "../features/usersApi"
 
 export const store = configureStore({
   reducer: {
@@ -12,9 +13,10 @@ export const store = configureStore({
     layoutType: layoutTypeReducer,
     searchFilters: searchFilterReducer,
     [galleryApi.reducerPath]: galleryApi.reducer,
+    [usersApi.reducerPath]: usersApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(galleryApi.middleware),
+    getDefaultMiddleware().concat(galleryApi.middleware, usersApi.middleware),
 })
 
 export type AppDispatch = typeof store.dispatch
