@@ -71,6 +71,11 @@
     @apply border-border;
   }
   body {
+    box-sizing: border-box;
+
     @apply bg-background bg-[#2e3035] text-foreground;
   }
 }
+
+/* components */
+@import "./sidePost.css";

@@ -1,0 +1,19 @@
+.Scrollbar--gray {
+  scroll-behavior: smooth;
+  scrollbar-color: #b4b9c2 transparent;
+  scrollbar-width: thin;
+}
+
+.Scrollbar--gray::-webkit-scrollbar {
+  width: 10px;
+}
+
+.Scrollbar--gray::-webkit-scrollbar-thumb {
+  background: #b4b9c2;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.Scrollbar--gray::-webkit-scrollbar-track {
+  background: 0 0;
+}

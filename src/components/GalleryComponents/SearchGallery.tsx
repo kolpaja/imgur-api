@@ -26,8 +26,7 @@ const SearchGallery = () => {
 
   const handleClear = useCallback(() => {
     setSearch("")
-    setSearchParams({ q: "" })
-  }, [setSearchParams])
+  }, [])
 
   return (
     <form

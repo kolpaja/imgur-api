@@ -8,7 +8,7 @@ export interface IFilters {
   showViral?: boolean
 }
 
-const initialState: IFilters = {
+export const initialStateFilters: IFilters = {
   section: "hot",
   sort: "viral",
   window: "day",
@@ -18,7 +18,7 @@ const initialState: IFilters = {
 
 export const filtersSlice = createSlice({
   name: "filters",
-  initialState,
+  initialState: initialStateFilters,
   reducers: {
     changeFilters: (state: IFilters, actions: PayloadAction<IFilters>) => {
       return (state = { ...state, ...actions.payload })

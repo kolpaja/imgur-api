@@ -9,13 +9,12 @@ import imgurPng from "@/assets/img/imgur-favicon-32x32.png"
 type SearchLayoutProps = {
   children: React.ReactNode
   post: {
-    title: string
-    author: string
+    title: string | JSX.Element
+    author: string | JSX.Element
   }
 }
 
 const PostLayout = ({ children, post }: SearchLayoutProps) => {
-  console.log("🚀 ~ file: PostLayout.tsx:17 ~ PostLayout ~ post:", post)
   const [isScrolled, setIsScrolled] = useState(false)
   const [scrolled, setScrolled] = useState(0)
 
@@ -34,8 +33,10 @@ const PostLayout = ({ children, post }: SearchLayoutProps) => {
     }
   }, [])
   return (
-    <main className="mx-auto bg-gradient-to-b from-blue-900 via-stone-600 to-stone-700">
-      <nav className="flex justify-between gap-x-1 w-full bg-blue-900 shadow-sm items-center px-6 fixed top-0 left-0 right-0 h-[60px] z-20">
+    <main className="mx-auto relative bg-stone-700">
+      <div className="absolute top-0 left-0 right-0 w-full h-[650px] bg-gradient-to-b from-blue-900 via-stone-600 to-stone-700" />
+
+      <nav className="flex justify-between gap-x-1 w-full bg-blue-900 shadow-sm  items-center px-6 fixed top-0 left-0 right-0 h-[60px] z-20">
         <Link to="/" className="min-w-[300px] text-white">
           {isScrolled ? (
             <img src={imgurPng} width={34} height={34} />
@@ -48,7 +49,9 @@ const PostLayout = ({ children, post }: SearchLayoutProps) => {
           {isScrolled ? (
             <div className="w-full flex items-center">
               <div className="flex flex-col">
-                <h1 className="text-xl text-white font-bold">{post.title}</h1>
+                <h1 className="text-xl text-white font-bold whitespace-nowrap  text-ellipsis h-6 overflow-hidden">
+                  {post.title}
+                </h1>
                 <h3 className="text-sm italic text-zinc-400">
                   by {post.author}
                 </h3>

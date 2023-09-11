@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { useAppSelector } from "@/app/hook"
 import RootLayout from "@/components/Layouts/RootLayout"
 import { useGetAllGalleriesQuery } from "@/features/galleryApi"
@@ -20,6 +20,16 @@ function App() {
     filters,
     page,
   })
+
+  const handleNextPage = () => {
+    window.scrollTo({ top: 0 })
+    setPage(page + 1)
+  }
+
+  const handlePreviousPage = () => {
+    window.scrollTo({ top: 0 })
+    setPage(page - 1)
+  }
 
   const [isScrolled, setIsScrolled] = useState(false)
   const [scrolled, setScrolled] = useState(0)
@@ -59,7 +69,7 @@ function App() {
         )}
 
         {isLoading ? (
-          <div className="grid max-w-[1900px]   sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 grid-flow-row gap-4 z-20">
+          <div className="grid xs:gr1d-cols-1 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 grid-flow-row gap-4 z-50">
             {Array.from({ length: 30 }).map((_, idx) => (
               <LoadingCard key={idx} />
             ))}
@@ -67,7 +77,7 @@ function App() {
         ) : (
           <div
             className={cn(
-              "sm:grid xs:gr1d-cols-1 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 grid-flow-row gap-4 relative z-50",
+              "grid xs:gr1d-cols-1 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 grid-flow-row gap-4 relative z-50",
             )}
           >
             {data?.data?.map((post: any) => {
@@ -82,7 +92,11 @@ function App() {
 
         {isError && <p>something wrong happened</p>}
 
-        <PageNavigation page={page} setPage={setPage} />
+        <PageNavigation
+          page={page}
+          nextPage={handleNextPage}
+          previousPage={handlePreviousPage}
+        />
       </div>
     </RootLayout>
   )

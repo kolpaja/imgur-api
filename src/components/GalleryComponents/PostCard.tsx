@@ -6,6 +6,9 @@ import {
   MessageCircle,
 } from "lucide-react"
 import { Link } from "react-router-dom"
+import MyImageWrapper from "../Image"
+import { Img } from "react-image"
+import LoadingImage from "./LoadingImage"
 
 const PostCard = (props: any) => {
   // console.log("🚀 ~ file: PostCard.tsx:8 ~ PostCard ~ post:", props)
@@ -28,7 +31,13 @@ const PostCard = (props: any) => {
               : "h-[250px] overflow-hidden",
           )}
         >
-          <img className="" src={imageSrc} width={300} />
+          <Img
+            className=""
+            src={imageSrc}
+            width={300}
+            loading="lazy"
+            loader={<LoadingImage />}
+          />
         </div>
 
         <div className="w-full absolute left-0 bottom-0 bg-[#474a51]">

@@ -1,13 +1,18 @@
 import { useRef } from "react"
 
+import Error from "@/components/Error"
+import LoadingGallery from "@/components/GalleryComponents/LoadingGallery"
+import MediaViewer from "@/components/GalleryComponents/MediaViewer"
+import SidePosts from "@/components/GalleryComponents/SidePosts"
+import UserAvatar from "@/components/GalleryComponents/UserAvatar"
+import PostLayout from "@/components/Layouts/PostLayout"
+import { Button } from "@/components/ui/button"
 import {
   useGetGalleryCommentsQuery,
   useGetSingleGalleryQuery,
 } from "@/features/galleryApi"
-import React from "react"
-import { Link, useParams } from "react-router-dom"
-import Comments from "@/components/GalleryComponents/Comments"
-import PostLayout from "@/components/Layouts/PostLayout"
+import { useGetUserByUsernameQuery } from "@/features/usersApi"
+import { getPostDate } from "@/lib/date"
 import {
   ArrowDown,
   ArrowUp,
@@ -19,12 +24,7 @@ import {
   Popcorn,
   Share2,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import UserAvatar from "@/components/GalleryComponents/UserAvatar"
-import { useGetUserByUsernameQuery } from "@/features/usersApi"
-import { getPostDate } from "@/lib/date"
-import MediaViewer from "@/components/GalleryComponents/MediaViewer"
-import Error from "@/components/Error"
+import { Link, useParams } from "react-router-dom"
 
 // Get the current date
 const currentDate = new Date()
@@ -35,12 +35,8 @@ const Gallery = () => {
 
   const { id } = params
 
-  const { data, isLoading, isError, error } = useGetSingleGalleryQuery(id)
-  console.log("🚀 ~ file: Gallery.tsx:21 ~ Gallery ~ data:", data?.data, {
-    error,
-  })
-
-  // render comments when it is scrolled
+  const { data, isLoading, isError, isSuccess, error } =
+    useGetSingleGalleryQuery(id)
 
   const {
     isError: isErrorComments,
@@ -58,13 +54,19 @@ const Gallery = () => {
 
   if (!id || isError) return <Error />
 
-  if (isLoading) return <div>...loading post</div>
+  if (isLoading) return <LoadingGallery />
 
   const postDate = new Date(data?.data?.datetime * 1000)
 
   const postDateAgo = getPostDate(postDate, currentDate)
 
-  const currentImage = data?.data?.images[0]
+  const imageSrc =
+    data.data.cover !== undefined
+      ? `http://i.imgur.com/${data.data.cover}.jpg`
+      : `http://i.imgur.com/${data.data.id}.jpg`
+
+  const currentImage =
+    data?.data.iamges !== undefined ? data?.data?.images[0] : []
 
   const imagesLength = Number(data?.data?.images_count)
 
@@ -72,7 +74,7 @@ const Gallery = () => {
     <PostLayout
       post={{ title: data?.data?.title, author: data?.data?.account_url }}
     >
-      <div className="pt-[24px] h-fit scroll-smooth overflow-visible">
+      <div className="pt-[24px] scroll-smooth overflow-visible">
         <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 mx-auto  max-w-6xl">
           <div className="flex w-full pt-10 flex-grow flex-row items-stretch z-10 ">
             <div className="w-[60px] basis-[60px] z-[3]">
@@ -179,7 +181,7 @@ const Gallery = () => {
                       <MediaViewer key={item.id} mediaObject={item} />
                     ))
                   ) : (
-                    <MediaViewer mediaObject={currentImage} />
+                    <img src={imageSrc} />
                   )}
                 </div>
 
@@ -205,8 +207,10 @@ const Gallery = () => {
           </div>
 
           {/* side bar ads */}
-          <aside className="w-[300px]">
-            <div className=""></div>
+          <aside className="w-[300px] z-20 basis-[300px] grow-0 shrink-0 relative">
+            <div className="">
+              <SidePosts />
+            </div>
           </aside>
         </div>
 

@@ -26,7 +26,10 @@ export const galleryApi = createApi({
     }),
     searchGalleries: builder.query({
       query: ({ filters, q }: { filters: ISearchFilters; q: string }) =>
-        `/gallery/search/fil/${filters.sort}/${filters.window}/${filters.page}}?q=${q}`,
+        `/gallery/search/${filters.sort}/${filters.window}/${filters.page}?q=${q}`,
+    }),
+    getTags: builder.query({
+      query: (tag: void) => "/tags",
     }),
   }),
 })
@@ -36,4 +39,5 @@ export const {
   useGetGalleryCommentsQuery,
   useGetSingleGalleryQuery,
   useSearchGalleriesQuery,
+  useGetTagsQuery,
 } = galleryApi

@@ -120,7 +120,7 @@ const GalleryFilters = ({ isScrolled }: Props) => {
                 <Filter className="hover:cursor-pointer text-zinc-400" />
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent side="left">
+            <DropdownMenuContent side="bottom">
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>Section</DropdownMenuSubTrigger>
                 <DropdownMenuPortal>

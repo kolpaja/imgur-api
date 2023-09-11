@@ -8,7 +8,7 @@ export interface ISearchFilters {
 }
 
 const initialState: ISearchFilters = {
-  sort: "top",
+  sort: "viral",
   window: "all",
   page: 0,
 }

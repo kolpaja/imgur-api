@@ -4,8 +4,8 @@ const hour = 60 * minute
 const day = 24 * hour
 
 export const getPostDate = (postDate: Date, now: Date) => {
-  // Calculate the time difference in milliseconds
-  // @ts-ignore
+  // Calculate the time difference in milliseconds, in real world scenario i would not do like this
+  //  @ts-ignore
   const timeDifference = now - postDate
 
   // Calculate the time difference in hours, minutes, and days

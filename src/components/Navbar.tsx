@@ -14,6 +14,7 @@ import ActionButtons from "./CTA/ActionButtons"
 import LayoutToggle from "./CTA/LayoutToggle"
 
 import GalleryFilters from "./Filters/GalleryFilters"
+import GalleryTags from "./GalleryComponents/GalleryTags"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -45,6 +46,7 @@ const Navbar = () => {
         top: `-${scrolled}px`,
       }}
     >
+      {!isScrolled ? <GalleryTags isScrolled={isScrolled} /> : null}
       <div
         className={cn(
           "fixed top-0 left-0 right-0 w-full px-6 py-4 flex justify-between",
