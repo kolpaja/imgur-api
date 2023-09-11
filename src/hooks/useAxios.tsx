@@ -21,7 +21,6 @@ const useAxios = (url: string) => {
     setLoading(true)
     try {
       const res = await axios(config)
-      console.log("use axios res: ", res)
       setResponse(res)
       setData(res.data.data)
       setError(null)

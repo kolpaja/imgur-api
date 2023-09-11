@@ -5,12 +5,10 @@ import { useSearchGalleriesQuery } from "@/features/galleryApi"
 import React from "react"
 import { useSearchParams } from "react-router-dom"
 
-type Props = {}
-
 // TODO search
 // https://api.imgur.com/3/gallery/search/{{sort}}/{{window}}/{{page}}?q=cats
 
-const SearchPage = (props: Props) => {
+const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const query = searchParams.get("q")

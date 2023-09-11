@@ -94,7 +94,7 @@ const Gallery = () => {
                     title="Upvote"
                     className="flex items-center justify-center"
                   >
-                    <ArrowUp className="h-8 w-8 hover:text-green-500" />
+                    <ArrowUp className="h-8 w-8 text-white hover:text-green-500" />
                   </button>
                   <div className="text-sm  flex items-center justify-center text-zinc-400">
                     <span className="text-right" title="Total Score">
@@ -105,22 +105,22 @@ const Gallery = () => {
                     title="Downvote"
                     className="flex items-center justify-center"
                   >
-                    <ArrowDown className="h-8 w-8 hover:text-rose-500" />
+                    <ArrowDown className="h-8 w-8 text-white hover:text-rose-500" />
                   </button>
                   <button
                     className=" mt-4  flex items-center justify-center"
                     title="Add to favorite"
                   >
-                    <Heart className="h-8 w-8 hover:text-rose-500 hover:fill-rose-900" />
+                    <Heart className="h-8 w-8 text-white hover:text-rose-500 hover:fill-rose-900" />
                   </button>
                 </div>
 
-                <div className="h-18 w-10 px-4 py-4 mb-8 ">
+                <div className="h-18 w-10 px-4 py-4 mt-4 mb-8 ">
                   <button
                     title="share"
-                    className="h-10 w-10  flex items-center justify-center"
+                    className=" flex items-center justify-center"
                   >
-                    <Share2 className="h-6 w-6" />
+                    <Share2 className="h-6 w-6 text-white" />
                   </button>
                 </div>
 
@@ -129,8 +129,8 @@ const Gallery = () => {
                   className="p-4 border border-zinc-300 gap-y-1 rounded-md flex flex-col items-center justify-center"
                   title="Jump to comments"
                 >
-                  <MessageCircle className="h-8 w-8" />
-                  <span className="text-xs">{comment_count}</span>
+                  <MessageCircle className="h-6 w-6 text-white" />
+                  <span className="text-xs text-white">{comment_count}</span>
                 </a>
               </aside>
             </div>
