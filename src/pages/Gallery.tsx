@@ -5,7 +5,7 @@ import {
   useGetSingleGalleryQuery,
 } from "@/features/galleryApi"
 import React from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Comments from "@/components/GalleryComponents/Comments"
 import PostLayout from "@/components/Layouts/PostLayout"
 import {
@@ -124,14 +124,14 @@ const Gallery = () => {
                   </button>
                 </div>
 
-                <a
-                  href="#gallery-comments"
+                <Link
+                  to="#gallery-comments"
                   className="p-4 border border-zinc-300 gap-y-1 rounded-md flex flex-col items-center justify-center"
                   title="Jump to comments"
                 >
                   <MessageCircle className="h-6 w-6 text-white" />
                   <span className="text-xs text-white">{comment_count}</span>
-                </a>
+                </Link>
               </aside>
             </div>
 
