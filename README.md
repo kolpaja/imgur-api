@@ -5,6 +5,9 @@
 - Filter gallery
 - View Gallery with the comments*
 - Search Galleries
+- Mobile View
+
+## IMPORTANT: The buttons are just for mocking UI actions, no actions on them
 
 ## Scripts
 

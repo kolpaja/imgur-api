@@ -81,3 +81,13 @@
     @apply bg-background bg-[#2e3035] text-foreground;
   }
 }
+
+/* testing */
+.bg-gradient-blue {
+  background: linear-gradient(
+      180deg,
+      rgba(37, 38, 41, 0.24) 26.22%,
+      #27292d 100%
+    ),
+    linear-gradient(0deg, #171544, #171544);
+}

@@ -177,7 +177,7 @@ const Gallery = () => {
               </header>
 
               <div className="flex flex-col h-fit  py-2 rounded-tr-sm">
-                <div className="max-w-[760px] h-fit flex flex-col gap-y-8">
+                <div className="max-w-[760px]   h-fit flex flex-col gap-y-8">
                   {imagesLength > 0 ? (
                     data?.data?.images?.map((item: any) => (
                       <MediaViewer key={item.id} mediaObject={item} />
@@ -187,7 +187,11 @@ const Gallery = () => {
                   )}
                 </div>
 
-                {data?.data?.description && <p>{data?.data?.description}</p>}
+                {data?.data?.description && (
+                  <p className="px-6 mb-6 whitespace-pre-wrap break-words leading-normal text-white/90 text-md">
+                    {data?.data?.description}
+                  </p>
+                )}
 
                 {data?.data?.tags.length > 0 ? (
                   <div className="hidden md:flex my-2 flex-wrap gap-3">
