@@ -46,8 +46,6 @@ const SearchPage = () => {
       },
     )
 
-  console.log({ data })
-
   const handleNextPage = () => {
     window.scrollTo({ top: 0 })
     dispatch(nextSearchPage())
@@ -64,7 +62,7 @@ const SearchPage = () => {
         <div className="w-full h-20">
           {isSuccess ? (
             <div>
-              <p className="text-white text-lg text-center font-semibold">
+              <p className="text-white text-sm px-4 md:text-lg text-center font-semibold">
                 Found {data?.data?.length} for{" "}
                 <strong className="text-white font-bold italic">{query}</strong>{" "}
                 , sorted by{" "}
@@ -90,7 +88,10 @@ const SearchPage = () => {
             {data?.data?.length > 0 ? (
               data?.data?.map((post: any) => {
                 return (
-                  <div key={post.id} className="">
+                  <div
+                    key={post.id}
+                    className="flex items-center justify-center"
+                  >
                     <PostCard {...post} layout={"square"} />
                   </div>
                 )

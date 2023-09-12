@@ -21,11 +21,11 @@ const LoadingGallery = () => {
         title: <h1 className="w-[250px] h-6 bg-zinc-400"></h1>,
       }}
     >
-      <div className="pt-[24px] h-screen scroll-smooth overflow-visible animate-pulse">
-        <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 mx-auto  max-w-6xl">
-          <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 mx-auto  max-w-6xl">
+      <div className="pt-[24px] h-screen scroll-smooth animate-pulse overflow-hidden">
+        <div className="flex flex-row justify-center flex-nowrap items-stretch  mx-auto  max-w-6xl">
+          <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 px-6 md:mx-auto  max-w-6xl">
             <div className="flex w-full pt-10 flex-grow flex-row items-stretch z-10 ">
-              <div className="w-[60px] basis-[60px] z-[3]">
+              <div className="hidden md:block w-[60px] basis-[60px] z-[3]">
                 <aside className="sticky top-[200px]  h-auto">
                   <div className="relative  p-4 mb-8">
                     <button className=" flex items-center justify-center">
@@ -76,14 +76,14 @@ const LoadingGallery = () => {
                 </aside>
               </div>
 
-              <section className="flex flex-col w-full mx-6 p-6 pt-10">
+              <section className="flex flex-col w-full ">
                 {/* header */}
                 <header className="flex flex-col">
-                  <div className="flex">
-                    <h1 className="min-w-5 w-[350px] h-6 rounded-lg text-2xl font-semibold bg-zinc-300 text-zinc-200"></h1>
+                  <div className="flex pl-4">
+                    <h1 className="min-w-5 w-[150px] md:w-[350px] h-4 rounded-lg text-2xl font-semibold bg-zinc-400 text-zinc-200"></h1>
                     <Button
                       variant="secondary"
-                      className="bg-gray-600 w-16  hover:bg-blue-500 text-white ml-auto"
+                      className="bg-gray-600 w-16 h-6 hover:bg-blue-500 text-white ml-auto"
                     ></Button>
                   </div>
 
@@ -104,14 +104,14 @@ const LoadingGallery = () => {
                   </div>
                 </header>
 
-                <div className="flex flex-col h-full">
-                  <div className="bg-zinc-400 h-[600px]" />
+                <div className="flex flex-col h-full px-1 md:px-8">
+                  <div className="bg-zinc-400 w-[300px] md:w-full h-[350px] rounded-sm md:h-[600px]" />
                 </div>
               </section>
             </div>
 
             {/* side bar ads */}
-            <aside className="w-[300px] mt-[200px]">
+            <aside className="hidden md:block w-[300px] mt-[200px]">
               <div className="bg-zinc-400 h-[200px] p-2 rounded-md">
                 <div className="h-full w-full bg-slate-600 rounded-md flex items-center  justify-center flex-col gap-4">
                   <div className="w-[150px] rounded-md h-8 bg-slate-400" />
