@@ -1,9 +1,12 @@
+/* components */
+@import "./sidePost.css";
+@import "./galleryTags.css";
+
+/* tailwind  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* components */
-@import "./sidePost.css";
 @layer base {
   :root {
     --background: 0 0% 100%;

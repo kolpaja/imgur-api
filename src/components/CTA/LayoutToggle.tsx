@@ -33,7 +33,7 @@ const LayoutToggle = ({ isScrolled }: Props) => {
             name="sort"
             onChange={(e) => onFilterChange(e)}
             defaultValue={layout}
-            className="bg-transparent  p-1 uppercase text-gray-400 font-semibold"
+            className="bg-transparent  p-1 uppercase text-gray-400 font-semibold hover:cursor-pointer"
           >
             <option value="waterfall">waterfall</option>
             <option value="uniform">uniform</option>

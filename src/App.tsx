@@ -61,7 +61,7 @@ function App() {
         }}
       >
         {!isScrolled && (
-          <div className=" w-full flex flex-col md:flex-row justify-between mx-auto z-50 relative">
+          <div className="hidden md:flex w-full  flex-col md:flex-row justify-between mx-auto z-50 relative">
             <ViralFilter isScrolled={isScrolled} />
             <LayoutToggle isScrolled={isScrolled} />
             <GalleryFilters isScrolled={isScrolled} />
@@ -77,12 +77,15 @@ function App() {
         ) : (
           <div
             className={cn(
-              "grid xs:gr1d-cols-1 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 grid-flow-row gap-4 relative z-50",
+              "grid xs:gr1d-cols-1 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 grid-flow-row gap-x-8 relative z-50",
             )}
           >
             {data?.data?.map((post: any) => {
               return (
-                <div key={post.id} className="">
+                <div
+                  key={post.id}
+                  className="flex justify-center items-center "
+                >
                   <PostCard {...post} layout={layout} />
                 </div>
               )

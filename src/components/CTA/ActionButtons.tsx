@@ -7,13 +7,14 @@ type Props = {
 
 const ActionButtons = ({ isScrolled, fromSearch }: Props) => {
   return (
-    <div className="flex gap-x-2 min-w-[280px]">
+    <div className="flex gap-x-2 min-w-0 lg:min-w-[280px]">
       {fromSearch ? null : (
-        <Button className="bg-purple-600 hover:bg-purple-500 text-white capitalize">
+        <Button className="bg-purple-600 hidden lg:block hover:bg-purple-500 text-white capitalize">
           Go ad-free
         </Button>
       )}
       <Button
+        size={"sm"}
         variant={"link"}
         className="text-white hover:bg-transparent font-semibold"
       >

@@ -22,7 +22,7 @@ const ViralFilter = ({ isScrolled }: { isScrolled: boolean }) => {
     >
       <input
         type="checkbox"
-        className="mx-2 w-6 h-6 rounded-md text-white"
+        className="mx-2 w-6 h-6 rounded-md text-white hover:cursor-pointer"
         checked={filters.showViral}
         onChange={handleShowViral}
       />

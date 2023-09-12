@@ -42,7 +42,7 @@ const SearchGallery = () => {
       />
 
       <button type="submit">
-        <Search className="absolute top-2 right-2 z-50 text-white/50 group-focus:text-white group-focus-visible:h-10" />
+        <Search className="h-5 w-5 absolute top-2 right-2 z-50 text-white/50 group-focus:text-white group-focus-visible:h-10" />
       </button>
 
       <button

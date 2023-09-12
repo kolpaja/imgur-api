@@ -61,7 +61,7 @@ const GalleryFilters = ({ isScrolled }: Props) => {
               name="section"
               onChange={(e) => onFilterChange(e)}
               defaultValue={filters.section}
-              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold"
+              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold hover:cursor-pointer"
             >
               <option className="" value="hot">
                 <span className="lowercase px-3">Hot</span>
@@ -82,7 +82,7 @@ const GalleryFilters = ({ isScrolled }: Props) => {
               name="sort"
               onChange={(e) => onFilterChange(e)}
               defaultValue={filters.sort}
-              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold"
+              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold hover:cursor-pointer"
             >
               <option value="viral">Viral</option>
               <option value="top">Top</option>
@@ -102,7 +102,7 @@ const GalleryFilters = ({ isScrolled }: Props) => {
               name="window"
               onChange={(e) => onFilterChange(e)}
               defaultValue={filters.window}
-              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold"
+              className="bg-transparent  p-1 uppercase text-gray-400 font-semibold hover:cursor-pointer"
             >
               <option value="day">Day</option>
               <option value="week">Week</option>

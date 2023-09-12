@@ -74,10 +74,10 @@ const Gallery = () => {
     <PostLayout
       post={{ title: data?.data?.title, author: data?.data?.account_url }}
     >
-      <div className="pt-[24px] scroll-smooth overflow-visible">
-        <div className="flex flex-row justify-center flex-nowrap items-stretch pt-6 mx-auto  max-w-6xl">
-          <div className="flex w-full pt-10 flex-grow flex-row items-stretch z-10 ">
-            <div className="w-[60px] basis-[60px] z-[3]">
+      <div className="pt-0 md:pt-[24px] scroll-smooth overflow-visible">
+        <div className="flex flex-row justify-center flex-nowrap items-stretch pt-0 lg:pt-6 mx-auto  max-w-6xl">
+          <div className="flex w-full pt-0 lg:pt-10 flex-grow flex-row items-stretch z-10 ">
+            <div className="w-[60px] hidden basis-[60px] z-[3]">
               <aside className="sticky top-[200px]  h-auto">
                 <div className="relative  p-4 mb-8">
                   <button className=" flex items-center justify-center">
@@ -133,7 +133,7 @@ const Gallery = () => {
               </aside>
             </div>
 
-            <section className="flex flex-col w-full mx-6 p-6 pt-10">
+            <section className="flex flex-col w-full mx-1 md:mx-6 px-6 pt-10">
               {/* header */}
               <header className="flex flex-col">
                 <div className="flex">
@@ -207,7 +207,7 @@ const Gallery = () => {
           </div>
 
           {/* side bar ads */}
-          <aside className="w-[300px] z-20 basis-[300px] grow-0 shrink-0 relative">
+          <aside className="hidden lg:block w-[300px] z-20 basis-[300px] grow-0 shrink-0 relative">
             <div className="">
               <SidePosts />
             </div>
